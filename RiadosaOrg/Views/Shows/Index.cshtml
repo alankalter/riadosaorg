@@ -1,0 +1,26 @@
+﻿@model RiadosaOrg.Models.Shows
+
+
+
+<h2>Shows</h2>
+
+<h3>Upcoming</h3>
+
+@foreach (var item in Model.Future)
+{
+	<div class="show">
+		<a target="_blank" href="@item.Url">@item.Venue</a> @item.Date.ToString("dd MMMM yyyy")
+		<div class="showInfo">@item.Info</div>
+	</div>
+}
+
+<h3>Past</h3>
+
+@foreach (var item in Model.Past)
+{
+	<div class="show">
+		<a target="_blank" href="@item.Url">@item.Venue</a> @item.Date.ToString("dd MMMM yyyy")
+		<div class="showInfo">@item.Info</div>
+	</div>
+}
+
