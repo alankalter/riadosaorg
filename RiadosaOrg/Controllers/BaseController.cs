@@ -6,12 +6,13 @@ using System.Web.Mvc;
 
 namespace RiadosaOrg.Controllers
 {
-    public class MusicController : BaseController
+    public class BaseController : Controller
     {
-        // GET: Music
-        public ActionResult Index()
+        // GET: Base
+        public BaseController()
         {
-            return View();
+            ViewBag.BgUrl = WebApiConfig.BackgroundImage;
         }
+       
     }
 }

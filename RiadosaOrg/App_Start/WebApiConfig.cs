@@ -10,8 +10,12 @@ namespace RiadosaOrg
 {
     public static class WebApiConfig
     {
+        public static string BackgroundImage;
+
         public static void Register(HttpConfiguration config)
         {
+            BackgroundImage = Helpers.GetRandomBgImage();
+
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();

@@ -8,34 +8,46 @@
 	@Scripts.Render("~/bundles/modernizr")
 	<link href="https://fonts.googleapis.com/css?family=Ramaraja" rel="stylesheet">
 </head>
-<body>
-
+<body style="background-image:url(@ViewBag.BgUrl)">
 	<div class="container body-content">
+
+		<nav class="d-lg-none d-xl-block">
+
+			<div class="" id="">
+				<div class="">
+					
+					<a href="/music" class="">Music</a>
+					<a href="/shows" class="">Shows</a>
+					<a href="/misc/about" class="">About</a>
+					<a href="/weatherchime" class="">WeatherChime</a>
+
+				</div>
+			</div>
+		</nav>
 		<div class="row">
-			<!--right-->
-			<!--/right-->
-			<!--left-->
+
+
 			<div class="col-md-9">
 				@RenderBody()
 
 			</div>
 
-			<div class="col-md-3" id="rtCol">				
+			<div class="col-md-3 " id="rtCol">
 				<ul class="nav flex-column">
 					<li class="nav-item">
-						<a href="/news" class="nav-link active" >News</a>
+						<a href="/news" class="nav-link active">News</a>
 					</li>
 					<li class="nav-item">
-						<a href="/music" class="nav-link" >Music</a>
+						<a href="/music" class="nav-link">Music</a>
 					</li>
 					<li class="nav-item">
-						<a href="/shows" class="nav-link" >Shows</a>
+						<a href="/shows" class="nav-link">Shows</a>
 					</li>
 					<li class="nav-item">
-						<a href="/about" class="nav-link" >About</a>
+						<a href="/misc/about" class="nav-link">About</a>
 					</li>
 					<li class="nav-item">
-						<a href="/weatherchime" class="nav-link" >WeatherChime</a>
+						<a href="/weatherchime" class="nav-link">WeatherChime</a>
 					</li>
 				</ul>
 			</div>

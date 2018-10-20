@@ -31,12 +31,7 @@ namespace RiadosaOrg.Controllers
             ViewResult vr = View(model);
             vr.MasterName = "~/Views/Shared/_LayoutEmpty.cshtml";
             return vr;
-        }
-
-        public ActionResult Viz()
-        {
-            return View();
-        }
+        }        
 
         [HttpGet]
         public FileResult GetPhoto(string request, string weatherEvent)
@@ -79,8 +74,9 @@ namespace RiadosaOrg.Controllers
 
 
                 imgUrl = responseJObject["satellite"]["image_url"].ToString();
-                //imgUrl = imgUrl.Replace("height=300", "height=600");
-                //imgUrl = imgUrl.Replace("width=300", "width=600");
+                imgUrl = imgUrl.Replace("height=300", "height=1200");
+                imgUrl = imgUrl.Replace("width=300", "width=1200");
+                imgUrl += "&smooth=1";
             }
             else
             {

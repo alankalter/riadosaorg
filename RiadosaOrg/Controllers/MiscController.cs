@@ -6,10 +6,9 @@ using System.Web.Mvc;
 
 namespace RiadosaOrg.Controllers
 {
-    public class MusicController : BaseController
+    public class MiscController : Controller
     {
-        // GET: Music
-        public ActionResult Index()
+        public ActionResult About()
         {
             return View();
         }

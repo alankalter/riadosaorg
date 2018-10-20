@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace RiadosaOrg.Controllers
 {
-    public class ShowsController : Controller
+    public class ShowsController : BaseController
     {
         // GET: Shows
         public ActionResult Index()

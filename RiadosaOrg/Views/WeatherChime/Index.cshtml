@@ -3,36 +3,6 @@
 }
 
 
-<style>
-	body {
-		font-family: sans-serif;
-	}
-
-	.container {
-		/*margin-left: auto;*/
-		/*margin-right: auto;*/
-		/*width: 300px;*/
-		text-align: center;
-	}
-
-	.aboutTab {
-		display: none;
-		max-width: 300px;
-		margin-right: auto;
-		margin-left: auto;
-	}
-
-	.aboutLink {
-		text-align: center;
-		cursor: pointer;
-		font-size: 10px;
-		padding: 7px;
-		color: gray;
-	}
-</style>
-
-
-
 
 <div class="container col-md-12">
 	<div class="location">
@@ -82,7 +52,7 @@
 
 			$('#tags').autocomplete({
 				source: function (request, response) {
-					var autocompleteUrl = 'api/WeatherChime/AutoComp' + '?searchText=' + request.term;
+					var autocompleteUrl = '/api/WeatherChime/AutoComp' + '?searchText=' + request.term;
 					$.ajax({
 						url: autocompleteUrl,
 						type: 'Post',
