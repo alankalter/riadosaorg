@@ -254,6 +254,7 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bg\1.png" />
     <Content Include="Content\bg\2.png" />
+    <Content Include="Content\bg\3.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
