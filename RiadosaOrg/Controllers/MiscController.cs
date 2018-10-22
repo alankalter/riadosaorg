@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace RiadosaOrg.Controllers
 {
-    public class MiscController : Controller
+    public class MiscController : BaseController
     {
         public ActionResult About()
         {
