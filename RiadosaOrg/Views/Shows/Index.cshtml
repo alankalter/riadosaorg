@@ -1,29 +1,38 @@
 ﻿@model RiadosaOrg.Models.Shows
 
 
-
+@section Styles {
+	<link href="@Url.Content("~/Content/Pages/Shows.css")" rel="stylesheet" type="text/css" />
+}
 <h2>Shows</h2>
-@if (Model.Future.Any())
-{
-	<h3>Upcoming</h3>
-}
 
-@foreach (var item in Model.Future)
-{
-	<div class="show">
-		<a target="_blank" href="@item.Url">@item.Venue</a> @item.Location @item.Date.ToString("dd MMMM yyyy")
-		<div class="showInfo">@item.Info</div>
-	</div>
-}
-@if (Model.Future.Any())
-{
-	<h3>Past</h3>
-}
+<div class="showArea">
+
+	@if (Model.Future.Any())
+	{
+		<h3>Upcoming</h3>
+	}
+
+	@foreach (var item in Model.Future)
+	{
+		<div class="show">
+			@item.Date.ToString("dd MMMM yyyy") - <a target="_blank" href="@item.Url">@item.Venue</a> - @item.Location 
+			<div class="showInfo">@item.Info</div>
+		</div>
+	}
+</div>
+
+<div class="showArea">
+	@if (Model.Future.Any())
+	{
+		<h3>Past</h3>
+	}
 	@foreach (var item in Model.Past)
 	{
-	<div class="show">
-		<a target="_blank" href="@item.Url">@item.Venue</a> @item.Location @item.Date.ToString("dd MMMM yyyy")
-		<div class="showInfo">@item.Info</div>
-	</div>
+		<div class="show">
+			@item.Date.ToString("dd MMMM yyyy") - <a target="_blank" href="@item.Url">@item.Venue</a> - @item.Location
+			<div class="showInfo">@item.Info</div>
+		</div>
 	}
+</div>
 

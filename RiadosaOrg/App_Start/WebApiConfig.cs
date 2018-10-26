@@ -5,15 +5,18 @@ using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
+using RiadosaOrg.Models;
 
 namespace RiadosaOrg
 {
     public static class WebApiConfig
     {
         public static string BackgroundImage;
+        public static CSSNumbers CSSNumbers;
 
         public static void Register(HttpConfiguration config)
         {
+            CSSNumbers = Helpers.GetCSSNumbers(); 
             BackgroundImage = Helpers.GetRandomBgImage();
 
             // Web API configuration and services

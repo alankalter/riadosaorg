@@ -1,11 +1,22 @@
-﻿<div class="center-block">
+﻿@{
+	ViewBag.Title = "Music";
+}
 
-	<iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=3489671524/size=large/bgcol=ffffff/linkcol=63b2cc/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://riadosa.bandcamp.com/album/capul-n">Capulín by Riadosa</a></iframe>
-</div>
-<div>
-	<iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=4225791597/size=large/bgcol=ffffff/linkcol=63b2cc/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://riadosa.bandcamp.com/track/hungry-heart">Hungry Heart by Riadosa</a></iframe>
-</div>
-<div>
+@section Styles {
+	<link href="@Url.Content("~/Content/Pages/Music.css")" rel="stylesheet" type="text/css" />
+}
+<div class="albums">
+	<div class="album">
 
-	<iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=194588526/size=large/bgcol=ffffff/linkcol=63b2cc/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://riadosa.bandcamp.com/album/reckless-melancholy">Reckless Melancholy by Riadosa</a></iframe>
+		<iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=3489671524/size=large/bgcol=ffffff/linkcol=63b2cc/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://riadosa.bandcamp.com/album/capul-n">Capulín by Riadosa</a></iframe>
+	</div>
+	<div class="album">
+
+		<iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=4225791597/size=large/bgcol=ffffff/linkcol=63b2cc/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://riadosa.bandcamp.com/track/hungry-heart">Hungry Heart by Riadosa</a></iframe>
+	</div>
+	<div class="album">
+
+
+		<iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=194588526/size=large/bgcol=ffffff/linkcol=63b2cc/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://riadosa.bandcamp.com/album/reckless-melancholy">Reckless Melancholy by Riadosa</a></iframe>
+	</div>
 </div>

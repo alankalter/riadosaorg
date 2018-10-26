@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace RiadosaOrg.Controllers
 {
-    public class WeatherChimeController : Controller
+    public class WeatherChimeController : BaseController
     {
         // GET: WeatherChime
         public ActionResult Index()

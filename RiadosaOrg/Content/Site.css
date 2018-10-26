@@ -1,8 +1,8 @@
-﻿body {
+body {
     padding-top: 50px;
     padding-bottom: 20px;
-	 font-family: Ramaraja;
-	background-image: url("../Content/bg/2.png");
+
+	 
 }
 
 
@@ -22,3 +22,22 @@ textarea {
 #rtCol {
 	float:right;
 }
+
+nav, .mainsection, footer {
+	background:#f8f9fa;
+	opacity:0.9;
+	border-style:solid;
+	
+}
+
+.mainsection {
+	opacity: 0.95;
+}
+
+.mainsection {
+	min-height: 500px;	
+}
+
+
+
+

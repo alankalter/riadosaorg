@@ -2,7 +2,9 @@
 	ViewBag.Title = "Weatherchime";
 }
 
-
+@section Styles {
+	<link href="@Url.Content("~/Content/Pages/Weatherchime.css")" rel="stylesheet" type="text/css" />
+}
 
 <div class="container col-md-12">
 	<div class="location">
@@ -20,7 +22,6 @@
 
 		</div>
 	</div>
-	<div class="aboutLink">about</div>
 	<div class="aboutTab">
 		<h3>What is this? </h3>
 
@@ -40,14 +41,13 @@
 
 
 
-
+@Styles.Render("~/Content/themes/base/css")
 
 @section scripts {
 
 	<script>
 		$(document).ready(function () {
 
-			$(".aboutLink").on("click", function slideAbout(e) { e.preventDefault(); $(".aboutTab").slideToggle(); });
 
 
 			$('#tags').autocomplete({
@@ -60,7 +60,7 @@
 						dataType: 'json',
 						success: function (json) {
 							var resObj = JSON.parse(json);
-							console.log(resObj.RESULTS);
+							//console.log(resObj.RESULTS);
 							response($.map(resObj.RESULTS, function (data, id) {
 								if (data.type == "city")
 									return {

@@ -6,53 +6,47 @@
 	<title>@ViewBag.Title</title>
 	@Styles.Render("~/Content/css")
 	@Scripts.Render("~/bundles/modernizr")
-	<link href="https://fonts.googleapis.com/css?family=Ramaraja" rel="stylesheet">
+	@RenderSection("Styles", false)
 </head>
 <body style="background-image:url(@ViewBag.BgUrl)">
+
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light" style="transform:rotate(@(ViewBag.NavRotate)deg); border-width:@ViewBag.BorderWidth; border-color:@ViewBag.BorderColor">
+		<a class="navbar-brand" href="/">Riadosa</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" style="transform:rotate(@(ViewBag.Link1Rotate)deg)" href="/music">Music<span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" style="transform:rotate(@(ViewBag.Link2Rotate)deg)" href="/shows">Shows</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" style="transform:rotate(@(ViewBag.Link3Rotate)deg)" href="/misc/about">About</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" style="transform:rotate(@(ViewBag.Link4Rotate)deg)" href="/weatherchime">WeatherChime</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 	<div class="container body-content">
 
-		<nav class="d-lg-none d-xl-block">
 
-			<div class="" id="">
-				<div class="">
-					
-					<a href="/music" class="">Music</a>
-					<a href="/shows" class="">Shows</a>
-					<a href="/misc/about" class="">About</a>
-					<a href="/weatherchime" class="">WeatherChime</a>
-
-				</div>
-			</div>
-		</nav>
-		<div class="row">
+		<div class="row mainsection" style="transform:rotate(@(ViewBag.BodyRotate)deg); border-width:@ViewBag.BorderWidth2; border-color:@ViewBag.BorderColor">
 
 
 			<div class="col-md-9">
 				@RenderBody()
-
 			</div>
 
-			<div class="col-md-3 " id="rtCol">
-				<ul class="nav flex-column">
-					<li class="nav-item">
-						<a href="/news" class="nav-link active">News</a>
-					</li>
-					<li class="nav-item">
-						<a href="/music" class="nav-link">Music</a>
-					</li>
-					<li class="nav-item">
-						<a href="/shows" class="nav-link">Shows</a>
-					</li>
-					<li class="nav-item">
-						<a href="/misc/about" class="nav-link">About</a>
-					</li>
-					<li class="nav-item">
-						<a href="/weatherchime" class="nav-link">WeatherChime</a>
-					</li>
-				</ul>
-			</div>
+
+
 		</div>
-		<footer>
+		<footer style="transform:rotate(@(ViewBag.FooterRotate)deg); border-width:@ViewBag.BorderWidth3; border-color:@ViewBag.BorderColor">
 			<p>&copy; @DateTime.Now.Year - Riadosa.org</p>
 		</footer>
 	</div>
@@ -61,5 +55,8 @@
 	@Scripts.Render("~/bundles/jquery")
 	@Scripts.Render("~/bundles/bootstrap")
 	@RenderSection("scripts", required: false)
+	<script type="text/javascript">
+		
+	</script>
 </body>
 </html>
