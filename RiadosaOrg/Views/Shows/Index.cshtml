@@ -1,6 +1,8 @@
 ﻿@model RiadosaOrg.Models.Shows
 
-
+@{
+	ViewBag.Title = "Shows";
+}
 @section Styles {
 	<link href="@Url.Content("~/Content/Pages/Shows.css")" rel="stylesheet" type="text/css" />
 }
@@ -16,7 +18,7 @@
 	@foreach (var item in Model.Future)
 	{
 		<div class="show">
-			@item.Date.ToString("dd MMMM yyyy") - <a target="_blank" href="@item.Url">@item.Venue</a> - @item.Location 
+			@item.Date.ToString("dd MMMM yyyy") - <a target="_blank" href="@item.Url">@item.Venue</a> - @item.Location
 			<div class="showInfo">@item.Info</div>
 		</div>
 	}
@@ -35,4 +37,6 @@
 		</div>
 	}
 </div>
+
+<div class="buffer"></div>
 

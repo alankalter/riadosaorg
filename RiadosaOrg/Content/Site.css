@@ -38,6 +38,9 @@ nav, .mainsection, footer {
 	min-height: 500px;	
 }
 
+.navbar-toggler {
+	border:none;
+}
 
 
 
