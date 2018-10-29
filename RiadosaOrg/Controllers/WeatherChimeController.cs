@@ -16,7 +16,7 @@ namespace RiadosaOrg.Controllers
             return View();
         }
 
-        public ActionResult Performance(string request, string weatherEvent)
+        public ActionResult Performancev1point0(string request, string weatherEvent)
         {
             var model = new PerformanceViewModel();
 
@@ -31,7 +31,24 @@ namespace RiadosaOrg.Controllers
             ViewResult vr = View(model);
             vr.MasterName = "~/Views/Shared/_LayoutEmpty.cshtml";
             return vr;
-        }        
+        }
+
+        public ActionResult Performancev1point1(string request, string weatherEvent)
+        {
+            var model = new PerformanceViewModel();
+
+            if (weatherEvent != null)
+            {
+                model = GetDataByWeatherEvent(weatherEvent);
+            }
+            else
+            {
+                model = GetDataByZmw(request);
+            }
+            ViewResult vr = View(model);
+            vr.MasterName = "~/Views/Shared/_LayoutEmpty.cshtml";
+            return vr;
+        }
 
         [HttpGet]
         public FileResult GetPhoto(string request, string weatherEvent)
@@ -76,6 +93,8 @@ namespace RiadosaOrg.Controllers
                 imgUrl = responseJObject["satellite"]["image_url"].ToString();
                 imgUrl = imgUrl.Replace("height=300", "height=1200");
                 imgUrl = imgUrl.Replace("width=300", "width=1200");
+                imgUrl = imgUrl.Replace("radius=75", "radius=100");
+
                 imgUrl += "&smooth=1";
             }
             else

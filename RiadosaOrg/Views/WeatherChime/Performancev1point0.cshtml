@@ -1,0 +1,114 @@
+﻿
+@{
+	ViewBag.Title = "Weatherchime";
+}
+<style>
+	body {
+		font-family: sans-serif;
+	}
+
+	canvas {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -2;
+	}
+
+	@@media (max-width: 768px) {
+		canvas {
+			height: 120%;
+		}
+	}
+
+	.labels {
+		background: white;
+		z-index: 10;
+		margin-left: auto;
+		margin-right: auto;
+		width: 200px;
+		text-align: center;
+		opacity: 0.8;
+		cursor: pointer;
+	}
+
+		.labels h2 {
+			margin: 0;
+		}
+
+	div.labels {
+		padding: 7px;
+	}
+
+	.mute {
+		float: right;
+		background: white;
+		cursor: pointer;
+		opacity: 0.7;
+		z-index: 12;
+		border-radius: 4px;
+		padding: 1px;
+	}
+
+	.playOverlay {
+		display: none;
+		z-index: 100;
+	}
+
+		.playOverlay img {
+			width: 100%;
+		}
+</style>
+<div class="mute">X</div>
+
+
+<div class="labels" title="Click to hide">
+	@if (Model.Temp != "")
+	{
+		<h2>@Model.Location</h2>
+
+		<div>Temp: @Model.Temp C</div>
+		<div>Humidity: @Model.Humidity %</div>
+		<div>Pressure: @Model.Pressure MB</div>
+		<div>Windspeed: @Model.WindSpeed k/hr</div>
+	}
+
+</div>
+
+
+<script type="text/javascript" src="~/Scripts/flocking-all.js"></script>
+
+
+
+<script type="text/javascript">
+
+    function convertRange(originalStart, originalEnd, newStart, newEnd, value) {
+        var scale = (newEnd - newStart) / (originalEnd - originalStart);
+        return (newStart + ((value - originalStart) * scale));
+    }
+    //var tempTest = ;
+    if ("@Model.Temp" != ""){
+        var values = {
+            Temp: parseInt(@Model.Temp),
+            Humidity: parseInt(@Model.Humidity),
+            Pressure: parseInt(@Model.Pressure),
+            Windspeed: parseInt(@Model.WindSpeed)
+        };
+    }
+    else {
+        $(".labels").html("<div>Data not available. Choose another city.</div><div><a href='/'>go back</a></div>");
+    }
+</script>
+
+<script type="text/javascript" src="~/Scripts/flockStuff.js"></script>
+<script type="text/javascript" src="~/Scripts/weatherchimev1.0.js"></script>
+
+
+<canvas id="myCanvas" width="1200" height="1200">
+	<!-- Insert fallback content here -->
+</canvas>
+
+<div class="playOverlay"><img src="~/Content/play-button-overlay.png" /></div>
+
+

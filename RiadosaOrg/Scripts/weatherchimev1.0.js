@@ -1,4 +1,4 @@
-function getUrlVars() {
+﻿function getUrlVars() {
 	var vars = [], hash;
 	var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
 	for (var i = 0; i < hashes.length; i++) {
@@ -60,127 +60,68 @@ var pressureColorCutOff = Math.ceil(convertRange(pressureRange[0], pressureRange
 console.log("humidity: " + humidityRule);
 console.log("pressurecolor: " + pressureColorCutOff);
 
-var factor,
-	canvas,
-	ctx,
-	width,
-	height,
-	len,
-	result,
-	offset,
-	delta,
-	value;
-
+var factor = 5;
 
 $(document).ready(function () {
 
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
 
-	factor = 5;
-	canvas = document.getElementById("myCanvas");
-	ctx = canvas.getContext("2d"),
-		width = canvas.width,
-		height = canvas.height,
-		len = 4 * width * height,
-		result = ctx.createImageData(width, height),
-		offset = new Array(len),
-		delta = new Array(len),
-		value = 0;
-
-	var seedImage = new Image();
-
-
-	seedImage.src = "/WeatherChime/GetPhoto?request=" + getUrlVars()["request"];
+	var image = new Image();
+	if (getUrlVars()["weatherEvent"]) {
+		image.src = "/WeatherChime/GetPhoto?weatherEvent=" + getUrlVars()["weatherEvent"];
+	}
+	else {
+		image.src = "/WeatherChime/GetPhoto?request=" + getUrlVars()["request"];
+	}
+	$(image).on("load", function () {
+		ctx.drawImage(image, 0, 0);
 
 
-
-	$(seedImage).on("load", function () {
-
-		ctx.drawImage(seedImage, 0, 0);
-		currentImage = ctx.getImageData(0, 0, canvas.width, canvas.height);
-		var morphedImage = morphImage(currentImage);
 
 		setInterval(function () {
-			currentImage = new ImageData(width, height);
-			currentImage.data = morphedImage.data.slice(0);
-		morphedImage = morphImage(currentImage);
+			//var randFactor = Math.random();
+
+			var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
 
-		
+			var newImage = morphImage(imageData);
 
-			result = ctx.createImageData(width, height);
-		for (i = 0; i < len; i += 1) {
-			offset[i] = morphedImage.data[i];
-				delta[i] = currentImage.data[i] - morphedImage.data[i];
-				result.data[i] = 255;
-			}
 
-			//ctx.fillStyle = '#fff';
-			//ctx.fillRect(0, 0, width, height);
-
-		
-		
-			//ctx.putImageData(newImage, 0, 0);
-
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			ctx.putImageData(newImage, 0, 0);
 		}, 1000);
-		start();
 
 	});
 });
 
+
+
 function morphImage(imageData) {
-	
+
 	var pixels = imageData.data;
-		var newImage = ctx.createImageData(width, height);
 
 	for (var i = 3; i < (pixels.length) - 3; i++) {
 
 		if (ruleCompute(rules[humidityRule], pressureColorCutOff, pixels[i - 3], pixels[i], pixels[i + 3])) {
 			if (pixels[i] + factor > 255) {
-				newImage.data[i] = pixels[i] + factor - 255;
+				pixels[i] = pixels[i] + factor - 255;
 			}
 			else {
-				newImage.data[i] = pixels[i] + factor;
+				pixels[i] = pixels[i] + factor;
 			}
 		}
 		else {
 			if (pixels[i] - factor < 0) {
-				newImage.data[i] = 255 + pixels[i] - factor;
+				pixels[i] = 255 + pixels[i] - factor;
 			}
 			else {
-				newImage.data[i] = pixels[i] - factor;
+				pixels[i] = pixels[i] - factor;
 			}
 		}
 	}
-
-	return newImage;
+	return imageData;
 }
-
-
-
-
-
-function tween(factor) {
-	var i, r;
-	r = result.data;
-	for (i = 0; i < len; i += 4) {
-		r[i] = offset[i] + delta[i] * factor;
-		r[i + 1] = offset[i + 1] + delta[i + 1] * factor;
-		r[i + 2] = offset[i + 2] + delta[i + 2] * factor;
-	}
-	ctx.putImageData(result, 0, 0);
-	frames += 1;
-}
-
-function start() {
-	value = 0;
-	timestamp = Date.now();
-	ticker = window.setInterval(function () {
-		value += 0.1;
-		tween(0.5 + 0.5 * Math.sin(value));
-	}, 1000 / 60);
-}
-
-
 
 $(document).ready(function () {
 	$(".labels").on("click", function () {
@@ -211,7 +152,7 @@ $(document).ready(function () {
 		});
 	}
 	else {
-		//environment.start();
+		environment.start();
 
 	}
 });

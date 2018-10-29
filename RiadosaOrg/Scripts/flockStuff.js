@@ -157,7 +157,7 @@ clock.repeat(pressureClockScl, function () {
     idx = Math.ceil(score.length * Math.random());
 
     var event = score[idx];
-    if (event != undefined) {
+    if (event !== undefined) {
         polySynth[event.action](event.noteName, event.change);
     }
     
@@ -165,7 +165,7 @@ clock.repeat(pressureClockScl, function () {
 
 var clicksIdx = -2;
 clock2.repeat(5, function () {
-    if (clicksIdx = 1) {
+    if (clicksIdx === 1) {
 
         var clickDyn = mulFibGenVals[Math.ceil((tempmulFibGenValsLength + 1) * Math.random())];
         //console.log(clickDyn);

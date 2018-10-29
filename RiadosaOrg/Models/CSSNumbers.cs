@@ -13,6 +13,7 @@ namespace RiadosaOrg.Models
         public string Link2Rotate { get; set; }
         public string Link3Rotate { get; set; }
         public string Link4Rotate { get; set; }
+        public string Link5Rotate { get; set; }
         public string FooterRotate { get; set; }
         public string BorderWidth { get; set; }
         public string BorderWidth2 { get; set; }

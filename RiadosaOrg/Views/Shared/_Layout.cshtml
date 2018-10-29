@@ -1,7 +1,7 @@
 ﻿@using RiadosaOrg.Controllers
 @{
-	 var controller = ViewContext.Controller as BaseController;
-	 var cssVals = controller.cssNumbers;
+	var controller = ViewContext.Controller as BaseController;
+	var cssVals = controller.cssNumbers;
 }
 
 <!DOCTYPE html>
@@ -13,21 +13,59 @@
 	@Styles.Render("~/Content/css")
 	@Scripts.Render("~/bundles/modernizr")
 	@RenderSection("Styles", false)
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 </head>
 <body style="background-image:url(@controller.bgImage)">
 
 
-	
+
 	<div class="container body-content">
-		<nav class="row navbar navbar-expand-lg navbar-light bg-light" style="transform:rotate(@(cssVals.NavRotate)deg); border-width:@cssVals.BorderWidth; border-color:@cssVals.BorderColor">
+		<div class="rightNav text-right">
+			<div class="rightNavChild flex-column d-none d-md-block">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light" style="transform:rotate(@(cssVals.NavRotate)deg); border-width:@cssVals.BorderWidth; border-color:@cssVals.BorderColor">
+				
+					<div class="" id="navbarNav">
+						<ul class="navbar-nav flex-column">
+							<li class="nav-item">
+								<a class="navbar-brand" href="/">Riadosa</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" style="transform:rotate(@(cssVals.Link1Rotate)deg)" href="/music">Music<span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" style="transform:rotate(@(cssVals.Link1Rotate)deg)" href="/music/visuals">Visuals<span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" style="transform:rotate(@(cssVals.Link2Rotate)deg)" href="/shows">Shows</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" style="transform:rotate(@(cssVals.Link3Rotate)deg)" href="/misc/about">About</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" style="transform:rotate(@(cssVals.Link4Rotate)deg)" href="/weatherchime">WeatherChime</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" style="transform:rotate(@(cssVals.Link5Rotate)deg)" href="/misc/mailinglist">Mailing List</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+
+
+		<nav class="row navbar navbar-expand-lg navbar-light bg-light d-md-none" style="transform:rotate(@(cssVals.NavRotate)deg); border-width:@cssVals.BorderWidth; border-color:@cssVals.BorderColor">
 			<a class="navbar-brand" href="/">Riadosa</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span style="transform:rotate(@(cssVals.Link1Rotate)deg)" class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav">
+				<ul class="navbar-nav flex-column">
 					<li class="nav-item">
 						<a class="nav-link" style="transform:rotate(@(cssVals.Link1Rotate)deg)" href="/music">Music<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" style="transform:rotate(@(cssVals.Link1Rotate)deg)" href="/music/visuals">Visuals<span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" style="transform:rotate(@(cssVals.Link2Rotate)deg)" href="/shows">Shows</a>
@@ -38,23 +76,26 @@
 					<li class="nav-item">
 						<a class="nav-link" style="transform:rotate(@(cssVals.Link4Rotate)deg)" href="/weatherchime">WeatherChime</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" style="transform:rotate(@(cssVals.Link5Rotate)deg)" href="/misc/mailinglist">Mailing List</a>
+					</li>
 				</ul>
 			</div>
 		</nav>
 
-		<div class="row mainsection" style="transform:rotate(@(cssVals.BodyRotate)deg); border-width:@cssVals.BorderWidth2; border-color:@cssVals.BorderColor">
-
-
-			<div class="col-md-9">
+		<div class="row">	
+			<div class="col-md-10 mainsection" style="transform:rotate(@(cssVals.BodyRotate)deg); border-width:@cssVals.BorderWidth2; border-color:@cssVals.BorderColor">
 				@RenderBody()
 			</div>
 
-
-
 		</div>
-		<footer style="transform:rotate(@(cssVals.FooterRotate)deg); border-width:@cssVals.BorderWidth3; border-color:@cssVals.BorderColor">
-			<p>&copy; @DateTime.Now.Year - Riadosa.org</p>
-		</footer>
+
+
+		<div class="row">
+			<footer class="col-md-10" style="transform:rotate(@(cssVals.FooterRotate)deg); border-width:@cssVals.BorderWidth3; border-color:@cssVals.BorderColor">
+				<p>&copy; @DateTime.Now.Year - Riadosa.org</p>
+			</footer>
+		</div>
 	</div>
 
 
@@ -62,7 +103,14 @@
 	@Scripts.Render("~/bundles/bootstrap")
 	@RenderSection("scripts", required: false)
 	<script type="text/javascript">
-
+		$(document).ready(function () {
+			var links = $('.navbar a');
+			$.each(links, function (key, va) {
+				if (va.href === document.URL) {
+					$(this).addClass('active');
+				}
+			});
+		});
 	</script>
 </body>
 </html>

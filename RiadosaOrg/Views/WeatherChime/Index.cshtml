@@ -12,14 +12,16 @@
 			<h2>Weatherchime</h2>
 
 		</div>
-		<div class="row">
-			<div class="ui-widget">
-				<div>
-					<label for="tags">Location</label>
+		<div class="locationbox">
+				<div class="ui-widget">
+					<div>
+						<label for="tags">Location</label>
+					</div>
+					<input id="tags">
 				</div>
-				<input id="tags">
-			</div>
 
+			<div><input type="radio" name="version" value="one" checked> v1.1<br></div>
+			<div><input type="radio" name="version" value="zero"> v1.0<br></div>
 		</div>
 	</div>
 	<div class="aboutTab">
@@ -62,7 +64,7 @@
 							var resObj = JSON.parse(json);
 							//console.log(resObj.RESULTS);
 							response($.map(resObj.RESULTS, function (data, id) {
-								if (data.type == "city")
+								if (data.type === "city")
 									return {
 										label: data.name,
 										value: data.zmw
@@ -80,8 +82,13 @@
 					event.preventDefault();
 					$("#tags").val(ui.item.label);
 					//PK.render(ui.item.value);
-
-					window.location = '/WeatherChime/Performance?request=' + ui.item.value;
+					var version = $('input[name=version]:checked').val();
+					if (version=== "one"){
+						window.location = '/WeatherChime/Performancev1point1?request=' + ui.item.value;
+					}
+					else{
+						window.location = '/WeatherChime/Performancev1point0?request=' + ui.item.value;
+				}
 				},
 				focus: function (event, ui) {
 					$("#tags").val(ui.item.label);

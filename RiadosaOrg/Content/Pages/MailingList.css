@@ -1,0 +1,13 @@
+﻿
+.mailingList {
+	margin-top: 5%;
+}
+
+#EmailAddress {
+	border-width: 1px;
+	border-style: solid;
+}
+
+.mailingList div{
+	margin: 15px;
+}

@@ -6,3 +6,13 @@
 .aboutTab {
 	margin:20px;
 }
+
+a {
+	color: rgba(0, 0, 0, 0.7) !important;
+}
+.location{
+	margin-top:5%;
+}
+.locationbox {
+	margin-left: 10%;
+}

@@ -13,5 +13,10 @@ namespace RiadosaOrg.Controllers
         {
             return View();
         }
+
+        public ActionResult Visuals()
+        {
+            return View();
+        }
     }
 }

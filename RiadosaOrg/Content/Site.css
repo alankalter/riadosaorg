@@ -1,8 +1,7 @@
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-
-	 
+	padding-top: 50px;
+	padding-bottom: 20px;
+	font-family: 'Roboto Slab', serif;
 }
 
 
@@ -19,6 +18,23 @@ textarea {
     max-width: 280px;
 }
 
+.rightNav {
+	position: fixed;
+	right: 5%;
+	top: 8%;
+	opacity: 0.99;
+	z-index: 10;
+}
+
+.rightNav .navbar-brand {
+	margin-right:0;
+	}
+
+.rightNav nav{
+	opacity: 0.99;
+}
+
+
 #rtCol {
 	float:right;
 }
@@ -32,6 +48,7 @@ nav, .mainsection, footer {
 
 .mainsection {
 	opacity: 0.95;
+	padding-right: 5%
 }
 
 .mainsection {
@@ -40,6 +57,10 @@ nav, .mainsection, footer {
 
 .navbar-toggler {
 	border:none;
+}
+
+footer p {
+	margin:0.5rem 0;
 }
 
 

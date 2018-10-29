@@ -17,7 +17,7 @@ namespace RiadosaOrg.Controllers
             get
             {
                 if (Session["CSSNumbers"] == null)
-                    Session["CSSNumbers"] = Helpers.GetCSSNumbers();
+                    Session["CSSNumbers"] = Providers.Styling.GetCSSNumbers();
                 return (CSSNumbers)Session["CSSNumbers"];
             }
         }
@@ -27,7 +27,7 @@ namespace RiadosaOrg.Controllers
             get
             {
                 if (Session["BGImage"] == null)
-                    Session["BGImage"] = Helpers.GetRandomBgImage();
+                    Session["BGImage"] = Providers.Styling.GetRandomBgImage();
                 return (string)Session["BGImage"];
             }
         }       

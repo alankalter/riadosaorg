@@ -1,0 +1,31 @@
+﻿@model RiadosaOrg.Models.MailingList
+@{
+	ViewBag.Title = "MailingList";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+	<link href="@Url.Content("~/Content/Pages/MailingList.css")" rel="stylesheet" type="text/css" />
+}
+
+<div class="mailingList">
+	<h2>MailingList</h2>
+
+
+
+	<div>For periodic updates about shows and releases and whatnots, please subscribe:</div>
+
+	@using (Html.BeginForm("SubmitEmail", "Misc", FormMethod.Post))
+	{
+		@Html.TextBoxFor(model => model.EmailAddress)
+		<Div>
+			@Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+		</Div>
+		<button type="submit">Subscribe</button>
+	}
+	@if (Model.SuccessMessage != null)
+	{
+		<div class="alert-success">@Model.SuccessMessage.</div>
+	}
+
+</div>
