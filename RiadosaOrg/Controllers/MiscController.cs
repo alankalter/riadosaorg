@@ -35,8 +35,8 @@ namespace RiadosaOrg.Controllers
             data.WriteToCsv(Server.MapPath(("~/mailinglist.csv")), 
                     new { date = DateTime.Now, emailAddress = request.emailAddress });
 
-            //var email = new EmailProvider();
-            //email.SendEmail(new SendEmailRequest { ToAddress = "riadosaorg@gmail.com", ToName = "Chief", Subject = "MailingList Submission", Body = $"New email address for the MailingList: {request.emailAddress}" });
+            var email = new EmailProvider();
+            email.SendEmail(new SendEmailRequest { ToAddress = "riadosaorg@gmail.com", ToName = "Chief", Subject = "MailingList Submission", Body = $"New email address for the MailingList: {request.emailAddress}" });
 
             var model = new MailingList { SuccessMessage="Thanks for subscribing"};
 

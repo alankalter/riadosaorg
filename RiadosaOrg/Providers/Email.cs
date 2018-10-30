@@ -20,12 +20,12 @@ namespace RiadosaOrg.Providers
 
                 var smtp = new SmtpClient
                 {
-                    Host = "relay-hosting.secureserver.net",
-                    Port = 25,
+                    Host = "smtp.gmail.com",
+                    Port = 587,
                     EnableSsl = true,
                     DeliveryMethod = SmtpDeliveryMethod.Network,
-                    UseDefaultCredentials = true
-                    //Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
                 };
                 using (var message = new MailMessage(fromAddress, toAddress)
                 {
@@ -55,6 +55,7 @@ namespace RiadosaOrg.Providers
             catch(Exception ex)
             {
                 //throw ex;
+                return false;
             }
         }
     }
