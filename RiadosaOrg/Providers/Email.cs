@@ -54,7 +54,7 @@ namespace RiadosaOrg.Providers
             }
             catch(Exception ex)
             {
-                throw ex;
+                //throw ex;
             }
         }
     }
