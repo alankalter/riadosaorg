@@ -16,8 +16,10 @@ namespace RiadosaOrg.Controllers
         public ActionResult Index()
         {
             var data = new DataProvider();
-            var shows = data.GetShows(Server.MapPath("~/shows.csv")).OrderByDescending(x => x.Date);
-            return View(new Shows { Future = shows.Where(x=>x.Date > DateTime.Now), Past = shows.Where(x => x.Date < DateTime.Now)  });
+            var shows = data.GetShows(Server.MapPath("~/shows.csv"));
+            return View(new Shows { Future = shows.Where(x=>x.Date > DateTime.Now).OrderBy(x => x.Date),
+                Past = shows.Where(x => x.Date < DateTime.Now).OrderByDescending(x => x.Date)
+            });
         }
         
     }

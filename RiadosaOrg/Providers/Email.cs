@@ -20,12 +20,9 @@ namespace RiadosaOrg.Providers
 
                 var smtp = new SmtpClient
                 {
-                    Host = "smtp.gmail.com",
-                    Port = 587,
-                    EnableSsl = true,
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                    UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+                    Host = "mail.riadosa.org",
+                    Port = 587,                    
+                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
                 };
                 using (var message = new MailMessage(fromAddress, toAddress)
                 {
@@ -35,27 +32,12 @@ namespace RiadosaOrg.Providers
                 {
                     smtp.Send(message);
                 }
-
-
-
-
-
-                //MailMessage message = new MailMessage();
-                //message.From = new MailAddress("riadosaorg@gmail.com");
-
-                //message.To.Add(new MailAddress("trevorcwilliams@gmail.com"));
-
-                //message.Subject = request.Subject;
-                //message.Body = "content of your email";
-
-                //SmtpClient client = new SmtpClient();
-                //client.Send(message);
                 return true;
             }
             catch(Exception ex)
             {
-                //throw ex;
-                return false;
+                throw ex;
+                //return false;
             }
         }
     }
