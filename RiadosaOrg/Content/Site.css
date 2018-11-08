@@ -21,7 +21,7 @@ textarea {
 .rightNav {
 	position: fixed;
 	right: 5%;
-	top: 8%;
+	top: 10%;
 	opacity: 0.99;
 	z-index: 10;
 }
@@ -64,4 +64,21 @@ footer p {
 }
 
 
+.logoImg {
+	width:240px;
+	position:absolute;
+	
+	top:-80px;
+	right:-58px;
+}
 
+.logoGap{
+	height:10px;
+}
+
+.logoImgMob {
+	width:200px;
+	position:absolute;	
+	top:-55px;
+	left:-35px;
+}
