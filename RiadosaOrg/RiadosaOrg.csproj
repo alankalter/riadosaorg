@@ -321,6 +321,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\logos\2.png" />
     <Content Include="Content\logos\3.png" />
+    <Content Include="Content\logos\4.png" />
     <Content Include="Content\Pages\About.css" />
     <Content Include="Content\Pages\MailingList.css" />
     <Content Include="Content\Pages\Music.css" />
