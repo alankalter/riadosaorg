@@ -13,17 +13,21 @@
 	@Styles.Render("~/Content/css")
 	@Scripts.Render("~/bundles/modernizr")
 	@RenderSection("Styles", false)
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+	@*<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">*@
 </head>
 <body style="background-image:url(@controller.bgImage)">
-
+	<style>
+	@@font-face {
+	font-family: 'trevoralpha';
+	src: url('/Content/fonts/Trevoralpha3-Regular.ttf')
+	}</style>
 
 
 	<div class="container body-content">
 		<div class="rightNav text-right">
 			<div class="rightNavChild flex-column d-none d-md-block">
 				<nav class="navbar navbar-expand-lg navbar-light bg-light" style="transform:rotate(@(cssVals.NavRotate)deg); border-width:@cssVals.BorderWidth; border-color:@cssVals.BorderColor">
-				
+
 					<div class="" id="navbarNav">
 						<div class="logoGap"></div>
 
@@ -63,7 +67,7 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<div class="logoGap"></div>
-	
+
 				<ul class="navbar-nav flex-column">
 					<li class="nav-item">
 						<a class="nav-link" style="transform:rotate(@(cssVals.Link1Rotate)deg)" href="/music">Music<span class="sr-only">(current)</span></a>
@@ -87,7 +91,7 @@
 			</div>
 		</nav>
 
-		<div class="row">	
+		<div class="row">
 			<div class="col-md-10 mainsection" style="transform:rotate(@(cssVals.BodyRotate)deg); border-width:@cssVals.BorderWidth2; border-color:@cssVals.BorderColor">
 				@RenderBody()
 			</div>
