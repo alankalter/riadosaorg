@@ -319,6 +319,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\606.gif" />
     <Content Include="Content\logos\5.png" />
     <Content Include="Content\Pages\About.css" />
     <Content Include="Content\Pages\MailingList.css" />

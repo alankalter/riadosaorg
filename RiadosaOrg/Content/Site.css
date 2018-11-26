@@ -84,3 +84,7 @@ footer p {
 	top:-55px;
 	left:-35px;
 }
+
+.showInfo p {
+	opacity: 1;
+}

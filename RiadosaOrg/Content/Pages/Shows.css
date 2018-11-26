@@ -2,11 +2,16 @@
 
 .showArea {
 	margin: 10px 20px;
+
+}
+h2 {
+	font-size: 1.2em;
+	font-weight:bold;
 }
 
 .showInfo {
 	margin-left: 30px;
-	font-size: small;
+	font-size: 0.8em;
 }
 
 .show a {
@@ -23,4 +28,8 @@ margin:0 0 10px 10px;
 
 .showsPage {
 	margin-top: 5%;
+}
+
+.sectionTitle img{
+	height:50px;
 }
