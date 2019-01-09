@@ -7,13 +7,13 @@
 	<link href="@Url.Content("~/Content/Pages/Shows.css")" rel="stylesheet" type="text/css" />
 }
 	<div class="showsPage">
-		<h2>Shows</h2>
+		<h1>Shows</h1>
 
 		<div class="showArea">
 
 			@if (Model.Future.Any())
 			{
-				<h3>Upcoming</h3>
+			<div class="sectionTitle"> <h2><img src="~/Content/img/606.gif" />Upcoming<img src="~/Content/img/606.gif" /></h2> </div>
 			}
 
 			@foreach (var item in Model.Future)
@@ -28,7 +28,7 @@
 		<div class="showArea">
 			@if (Model.Future.Any())
 			{
-				<h3>Past</h3>
+				<h2>Past</h2>
 			}
 			@foreach (var item in Model.Past)
 			{

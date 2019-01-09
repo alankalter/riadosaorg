@@ -1,7 +1,9 @@
 body {
 	padding-top: 50px;
 	padding-bottom: 20px;
-	font-family: 'Roboto Slab', serif;
+	font-family: 'trevoralpha', serif;
+	font-size: 2em;
+	font-weight: bold;
 }
 
 
@@ -21,7 +23,7 @@ textarea {
 .rightNav {
 	position: fixed;
 	right: 5%;
-	top: 8%;
+	top: 10%;
 	opacity: 0.99;
 	z-index: 10;
 }
@@ -64,4 +66,25 @@ footer p {
 }
 
 
+.logoImg {
+	width:240px;
+	position:absolute;
+	
+	top:-87px;
+	right:-40px;
+}
 
+.logoGap{
+	height:10px;
+}
+
+.logoImgMob {
+	width:200px;
+	position:absolute;	
+	top:-55px;
+	left:-35px;
+}
+
+.showInfo p {
+	opacity: 1;
+}

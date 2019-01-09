@@ -3,7 +3,7 @@
 @{
 	ViewBag.Title = "Riadosa";
 }
-<h2>News</h2>
+<h1>News</h1>
 
 
 @foreach (var item in Model)
@@ -12,6 +12,7 @@
 		<div class="postDate"> @item.Date.ToString("dd MMMM yyyy")</div>
 		<div class="showInfo">@Html.Raw(item.Text)</div>
 	</div>
+	<hr />
 }
 
 

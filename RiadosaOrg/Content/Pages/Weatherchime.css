@@ -16,3 +16,7 @@ a {
 .locationbox {
 	margin-left: 10%;
 }
+
+.ui-widget {
+	font-family: 'trevoralpha', serif  !important;
+}
