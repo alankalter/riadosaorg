@@ -15,8 +15,12 @@ namespace RiadosaOrg.Controllers
         // GET: Shows
         public ActionResult Index()
         {
-            var data = new DataProvider();
-            var shows = data.GetShows(Server.MapPath("~/shows.csv")).OrderByDescending(x => x.Date);
+            List<Event> shows;
+            using (var data = new revocarr_RiadosaOrgEntities())
+            {
+                shows = data.Events.Select(x => x).OrderByDescending(x => x.Date).ToList();
+            }
+
             return View(new Shows { Future = shows.Where(x=>x.Date > DateTime.Now), Past = shows.Where(x => x.Date < DateTime.Now)  });
         }
         

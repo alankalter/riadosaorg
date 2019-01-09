@@ -7,7 +7,7 @@ namespace RiadosaOrg.Models
 {
     public class Shows
     {
-        public IEnumerable<Show> Future { get; set; }
-        public IEnumerable<Show> Past { get; set; }
+        public IEnumerable<Event> Future { get; set; }
+        public IEnumerable<Event> Past { get; set; }
     }
 }
