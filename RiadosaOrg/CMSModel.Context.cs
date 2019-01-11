@@ -27,5 +27,6 @@ namespace RiadosaOrg
     
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Event> Events { get; set; }
+        public virtual DbSet<Blog> Blogs { get; set; }
     }
 }

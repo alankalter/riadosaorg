@@ -31,16 +31,34 @@ namespace RiadosaOrg.Controllers
 
                 return View("MailingList", new MailingList());
             }
-            var data = new DataProvider();
-            data.WriteToCsv(Server.MapPath(("~/mailinglist.csv")), 
-                    new { date = DateTime.Now, emailAddress = request.emailAddress });
+            
+
+            using (var data = new revocarr_RiadosaOrgEntities())
+            {
+                var existing = data.Contacts.Where(x => x.Email == request.emailAddress).SingleOrDefault();
+
+                if (existing != null)
+                {
+                    ModelState.Clear();
+                    return View("MailingList", new MailingList { SuccessMessage = $"{request.emailAddress} saved." });
+                }
+
+                data.Contacts.Add(new Contact
+                {
+                    Email = request.emailAddress,
+                    DateAdded = DateTime.Now
+                });
+                data.SaveChanges();
+
+            }
 
             var email = new EmailProvider();
             email.SendEmail(new SendEmailRequest { ToAddress = "riadosaorg@gmail.com", ToName = "Chief", Subject = "MailingList Submission", Body = $"New email address for the MailingList: {request.emailAddress}" });
 
-            var model = new MailingList { SuccessMessage="Thanks for subscribing"};
-
+            var model = new MailingList { SuccessMessage = $"{request.emailAddress} saved. Thanks for subscribing." };
+            ModelState.Clear();
             return View("MailingList", model);
+            
         }
     }
 }

@@ -21,7 +21,7 @@ namespace RiadosaOrg.Controllers
                 shows = data.Events.Select(x => x).OrderByDescending(x => x.Date).ToList();
             }
 
-            return View(new Shows { Future = shows.Where(x=>x.Date > DateTime.Now), Past = shows.Where(x => x.Date < DateTime.Now)  });
+            return View(new Shows { Future = shows.Where(x=>x.Date > DateTime.Now.AddDays(-1)).OrderBy(x => x.Date), Past = shows.Where(x => x.Date < DateTime.Now.AddDays(-1))  });
         }
         
     }
