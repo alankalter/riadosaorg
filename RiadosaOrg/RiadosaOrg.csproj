@@ -55,6 +55,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -229,17 +230,40 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Blog.cs">
+      <DependentUpon>CMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CMSModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CMSModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CMSModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CMSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CMSModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CMSModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.cs">
+      <DependentUpon>CMSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\API\WeatherChimeController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\MiscController.cs" />
     <Compile Include="Controllers\MusicController.cs" />
     <Compile Include="Controllers\WeatherChimeController.cs" />
+    <Compile Include="Event.cs">
+      <DependentUpon>CMSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\AppSettings.cs" />
     <Compile Include="Models\MailingList.cs" />
     <Compile Include="Models\MailingListRequest.cs" />
     <Compile Include="Providers\Email.cs" />
     <Compile Include="Providers\Styling.cs" />
-    <Compile Include="Models\Blog.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ShowsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -252,16 +276,24 @@
     <Compile Include="Models\PerformanceRequestModel.cs" />
     <Compile Include="Models\PerformanceViewModel.cs" />
     <Compile Include="Models\SendEmailRequest.cs" />
-    <Compile Include="Models\Show.cs" />
     <Compile Include="Models\Shows.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
-    <Compile Include="Providers\DataProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="CMSModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CMSModel.edmx</DependentUpon>
+      <LastGenOutput>CMSModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CMSModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CMSModel.edmx</DependentUpon>
+      <LastGenOutput>CMSModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Content\bg\01.png" />
     <Content Include="Content\bg\02.png" />
     <Content Include="Content\bg\03.png" />
@@ -415,7 +447,13 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="blogs.csv" />
+    <EntityDeploy Include="CMSModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CMSModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="CMSModel.edmx.diagram">
+      <DependentUpon>CMSModel.edmx</DependentUpon>
+    </Content>
     <Content Include="Content\fonts\Trevoralpha3-Regular.otf" />
     <Content Include="Content\fonts\Trevoralpha3-Regular.ttf" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
@@ -457,7 +495,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shows\Index.cshtml" />
-    <Content Include="shows.csv" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\Music\Index.cshtml" />
     <Content Include="Views\WeatherChime\Index.cshtml" />
@@ -476,7 +513,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Misc\About.cshtml" />
-    <Content Include="mailingList.csv" />
     <Content Include="Views\Misc\MailingList.cshtml" />
     <Content Include="Views\Music\Visuals.cshtml" />
     <Content Include="Views\WeatherChime\Performancev1point1.cshtml" />
@@ -495,6 +531,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

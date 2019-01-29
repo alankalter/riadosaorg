@@ -18,9 +18,7 @@ h2 {
 	color: rgba(0, 0, 0, 0.5);
 }
 
-.show {
-margin:0 0 10px 10px;
-}
+.show {margin:0 0 10px 10px;font-size: 0.9em;}
 
 .buffer{
 	height:30px;

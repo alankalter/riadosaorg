@@ -19,7 +19,7 @@
 			@foreach (var item in Model.Future)
 			{
 				<div class="show">
-					@item.Date.ToString("dddd dd MMMM yyyy") - <a target="_blank" href="@item.Url">@item.Venue</a> - @item.Location
+					@item.Date.ToString("dddd MMMM dd, yyyy") - <a target="_blank" href="@item.Url">@item.Venue</a> - @item.Location
 					<div class="showInfo">@item.Info</div>
 				</div>
 			}
@@ -28,12 +28,12 @@
 		<div class="showArea">
 			@if (Model.Future.Any())
 			{
-				<h2>Past</h2>
+				<h1>Past</h1>
 			}
 			@foreach (var item in Model.Past)
 			{
 				<div class="show">
-					@item.Date.ToString("dddd dd MMMM yyyy") - <a target="_blank" href="@item.Url">@item.Venue</a> - @item.Location
+					@item.Date.ToString("dddd MMMM dd, yyyy") - <a target="_blank" href="@item.Url">@item.Venue</a> - @item.Location
 					<div class="showInfo">@item.Info</div>
 				</div>
 			}
