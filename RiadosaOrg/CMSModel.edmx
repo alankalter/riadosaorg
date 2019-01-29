@@ -32,10 +32,59 @@
           <Property Name="Url" Type="nvarchar" MaxLength="100" />
           <Property Name="Info" Type="nvarchar" MaxLength="500" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'revocarr_RiadosaOrg.revocarr_1.MFEvent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MFEvent">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Current" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" />
+          <Property Name="MFLocationId" Type="int" />
+          <Property Name="URL" Type="nvarchar" MaxLength="250" />
+          <Property Name="AuxField" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Time" Type="nvarchar" MaxLength="250" />
+          <Property Name="DateTimeEntered" Type="datetime" />
+          <Property Name="Current" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'revocarr_RiadosaOrg.revocarr_1.MFLocation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MFLocation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" />
+          <Property Name="Website" Type="nvarchar" MaxLength="250" />
+        </EntityType>
         <EntityContainer Name="revocarr_RiadosaOrgModelStoreContainer">
           <EntitySet Name="Blog" EntityType="Self.Blog" Schema="revocarr_1" store:Type="Tables" />
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="revocarr_1" store:Type="Tables" />
           <EntitySet Name="Event" EntityType="Self.Event" Schema="revocarr_1" store:Type="Tables" />
+          <EntitySet Name="MFEvent" EntityType="Self.MFEvent" store:Type="Tables" store:Schema="revocarr_1">
+            <DefiningQuery>SELECT 
+    [MFEvent].[Id] AS [Id], 
+    [MFEvent].[Title] AS [Title], 
+    [MFEvent].[MFLocationId] AS [MFLocationId], 
+    [MFEvent].[URL] AS [URL], 
+    [MFEvent].[AuxField] AS [AuxField], 
+    [MFEvent].[Date] AS [Date], 
+    [MFEvent].[Time] AS [Time], 
+    [MFEvent].[DateTimeEntered] AS [DateTimeEntered], 
+    [MFEvent].[Current] AS [Current]
+    FROM [revocarr_1].[MFEvent] AS [MFEvent]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MFLocation" EntityType="Self.MFLocation" store:Type="Tables" store:Schema="revocarr_1">
+            <DefiningQuery>SELECT 
+    [MFLocation].[Id] AS [Id], 
+    [MFLocation].[Name] AS [Name], 
+    [MFLocation].[Address] AS [Address], 
+    [MFLocation].[Website] AS [Website]
+    FROM [revocarr_1].[MFLocation] AS [MFLocation]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -53,6 +102,8 @@
           <EntitySet Name="Contacts" EntityType="Self.Contact" />
           <EntitySet Name="Events" EntityType="revocarr_RiadosaOrgModel.Event" />
           <EntitySet Name="Blogs" EntityType="revocarr_RiadosaOrgModel.Blog" />
+          <EntitySet Name="MFEvents" EntityType="revocarr_RiadosaOrgModel.MFEvent" />
+          <EntitySet Name="MFLocations" EntityType="revocarr_RiadosaOrgModel.MFLocation" />
         </EntityContainer>
         <EntityType Name="Event">
           <Key>
@@ -72,6 +123,30 @@
           <Property Name="BlogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="MFEvent">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Current" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MFLocationId" Type="Int32" />
+          <Property Name="URL" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="AuxField" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Time" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="DateTimeEntered" Type="DateTime" Precision="3" />
+          <Property Name="Current" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MFLocation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -106,6 +181,31 @@
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="BlogId" ColumnName="BlogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MFEvents">
+            <EntityTypeMapping TypeName="revocarr_RiadosaOrgModel.MFEvent">
+              <MappingFragment StoreEntitySet="MFEvent">
+                <ScalarProperty Name="Current" ColumnName="Current" />
+                <ScalarProperty Name="DateTimeEntered" ColumnName="DateTimeEntered" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="AuxField" ColumnName="AuxField" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="MFLocationId" ColumnName="MFLocationId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MFLocations">
+            <EntityTypeMapping TypeName="revocarr_RiadosaOrgModel.MFLocation">
+              <MappingFragment StoreEntitySet="MFLocation">
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
