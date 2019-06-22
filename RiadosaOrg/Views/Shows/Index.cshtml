@@ -18,10 +18,11 @@
 
 			@foreach (var item in Model.Future)
 			{
-				<div class="show">
-					@item.Date.ToString("dddd MMMM dd, yyyy") - <a target="_blank" href="@item.Url">@item.Venue</a> - @item.Location
-					<div class="showInfo">@item.Info</div>
-				</div>
+			<div class="show">
+				@item.Date.ToString("MMMM dd dddd") - <a target="_blank" href="@item.Url">@item.Venue</a> - @item.Location
+				<div class="showInfo">@item.Time</div>
+				<div class="showInfo">@item.Info</div>
+			</div>
 			}
 		</div>
 
@@ -33,7 +34,7 @@
 			@foreach (var item in Model.Past)
 			{
 				<div class="show">
-					@item.Date.ToString("dddd MMMM dd, yyyy") - <a target="_blank" href="@item.Url">@item.Venue</a> - @item.Location
+					@item.Date.ToString("MMM dd, yyyy") - <a target="_blank" href="@item.Url">@item.Venue</a> - @item.Location
 					<div class="showInfo">@item.Info</div>
 				</div>
 			}
