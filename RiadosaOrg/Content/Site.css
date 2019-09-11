@@ -24,7 +24,6 @@ textarea {
 	position: fixed;
 	right: 5%;
 	top: 10%;
-	opacity: 0.99;
 	z-index: 10;
 }
 
@@ -33,7 +32,6 @@ textarea {
 	}
 
 .rightNav nav{
-	opacity: 0.99;
 }
 
 
@@ -43,13 +41,11 @@ textarea {
 
 nav, .mainsection, footer {
 	background:#f8f9fa;
-	opacity:0.9;
 	border-style:solid;
 	
 }
 
 .mainsection {
-	opacity: 0.95;
 	padding-right: 5%
 }
 
@@ -87,4 +83,9 @@ footer p {
 
 .showInfo p {
 	opacity: 1;
+}
+
+
+.navbar-light .navbar-nav a.nav-link {
+	color: rgb(198, 0, 239)
 }
