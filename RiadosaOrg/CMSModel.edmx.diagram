@@ -8,6 +8,13 @@
         <EntityTypeShape EntityType="revocarr_RiadosaOrgModel.Contact" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="revocarr_RiadosaOrgModel.Event" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="revocarr_RiadosaOrgModel.Blog" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="revocarr_RiadosaOrgModel.AspNetRole" Width="1.5" PointX="3.375" PointY="6.5" />
+        <EntityTypeShape EntityType="revocarr_RiadosaOrgModel.AspNetUserClaim" Width="1.5" PointX="7.875" PointY="5" />
+        <EntityTypeShape EntityType="revocarr_RiadosaOrgModel.AspNetUserLogin" Width="1.5" PointX="7.875" PointY="7.75" />
+        <EntityTypeShape EntityType="revocarr_RiadosaOrgModel.AspNetUser" Width="1.5" PointX="5.625" PointY="5.375" />
+        <AssociationConnector Association="revocarr_RiadosaOrgModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="revocarr_RiadosaOrgModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="revocarr_RiadosaOrgModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,16 +12,13 @@ namespace RiadosaOrg
     using System;
     using System.Collections.Generic;
     
-    public partial class MFEvent
+    public partial class AspNetUserClaim
     {
         public int Id { get; set; }
-        public string Title { get; set; }
-        public Nullable<int> MFLocationId { get; set; }
-        public string URL { get; set; }
-        public string AuxField { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public string Time { get; set; }
-        public Nullable<System.DateTime> DateTimeEntered { get; set; }
-        public bool Current { get; set; }
+        public string UserId { get; set; }
+        public string ClaimType { get; set; }
+        public string ClaimValue { get; set; }
+    
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

@@ -12,11 +12,12 @@ namespace RiadosaOrg
     using System;
     using System.Collections.Generic;
     
-    public partial class MFLocation
+    public partial class AspNetUserLogin
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string Website { get; set; }
+        public string LoginProvider { get; set; }
+        public string ProviderKey { get; set; }
+        public string UserId { get; set; }
+    
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

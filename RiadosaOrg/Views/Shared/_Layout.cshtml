@@ -13,14 +13,16 @@
 	@Styles.Render("~/Content/css")
 	@Scripts.Render("~/bundles/modernizr")
 	@RenderSection("Styles", false)
-	@*<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">*@
+	<link href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap" rel="stylesheet">
+	<link href="~/Content/jquery-ui.css" rel="stylesheet">
 </head>
 <body style="background-image:url(@controller.bgImage)">
 	<style>
-	@@font-face {
+	/*@@font-face {
 	font-family: 'trevoralpha';
 	src: url('/Content/fonts/Trevoralpha3-Regular.ttf')
-	}</style>
+	}*/
+	</style>
 
 
 	<div class="container body-content">
@@ -48,12 +50,22 @@
 								<a class="nav-link" style="transform:rotate(@(cssVals.Link3Rotate)deg)" href="/misc/about">About</a>
 							</li>
 							@*<li class="nav-item">
-								<a class="nav-link" style="transform:rotate(@(cssVals.Link4Rotate)deg)" href="/weatherchime">WeatherChime</a>
-							</li>*@
+			<a class="nav-link" style="transform:rotate(@(cssVals.Link4Rotate)deg)" href="/weatherchime">WeatherChime</a>
+		</li>*@
 							<li class="nav-item">
 								<a class="nav-link" style="transform:rotate(@(cssVals.Link5Rotate)deg)" href="/misc/mailinglist">Mailing List</a>
 							</li>
-						</ul>
+							@if ((System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+							{
+								using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { role = "form" }))
+								{
+									@Html.AntiForgeryToken()
+									<li class="nav-item">
+										<input type="submit" value="Logout" class="btn btn-primary" />
+										</li>
+										}
+								}
+							</ul>
 					</div>
 				</nav>
 			</div>
